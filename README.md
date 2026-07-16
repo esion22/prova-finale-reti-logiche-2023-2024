@@ -9,14 +9,14 @@
 
 ## 🇬🇧 English Version
 
-### 📌 Project Overview
+### Project Overview
 This repository contains the hardware implementation of a digital module designed for the **Final Project of Logical Networks (Prova Finale di Reti Logiche)** at **Politecnico di Milano** (A.Y. 2023-2024).
 
 The project involves implementing a synchronous hardware module in VHDL that interfaces with a single-port RAM. The module processes a sequence of memory words, updates their values according to specific rules, and computes a **Credibility Value** ($C$) for each word, writing the results back to the memory.
 
 ---
 
-### 📋 Assignment Description
+### Assignment Description
 The module is required to read a sequence of $K$ words starting from a base memory address $ADD$.
 * **Memory Structure:**
   * The actual value of each word $W$ is located at even offsets: $ADD, ADD+2, ADD+4, \dots, ADD+2(K-1)$.
@@ -49,7 +49,7 @@ The module is required to read a sequence of $K$ words starting from a base memo
 
 ---
 
-### 🛠️ Architecture & Design
+### Architecture & Design
 The architecture is structured into two main interacting components inside the top-level entity [project_reti_logiche.vhd](file:///C:/Users/loisu/Desktop/scuola/universita/github_fix/prova-finale-reti-logiche-2023-2024/progetto/componenti/project_reti_logiche.vhd):
 
 ```mermaid
@@ -97,7 +97,7 @@ graph TD
 
 ---
 
-### 📊 Synthesis & Experimental Results
+### Synthesis & Experimental Results
 The hardware design was synthesized and implemented using **Xilinx Vivado** targeting the **FPGA xc7a200tfbg484-1** board.
 
 #### Resource Utilization
@@ -106,8 +106,7 @@ The hardware design was synthesized and implemented using **Xilinx Vivado** targ
 | **LUT as Logic** | 139 | 134,600 | 0.10 % |
 | **Flip-Flops (FF)** | 14 | 269,200 | < 0.01 % |
 
-> [!NOTE]
-> Special design care was taken during coding to avoid the creation of unwanted latches, guaranteeing a fully synchronous execution path and high reliability.
+Special design care was taken during coding to avoid the creation of unwanted latches, guaranteeing a fully synchronous execution path and high reliability.
 
 #### Timing Constraints
 * **Required Clock Period:** `20.0 ns` (50 MHz)
@@ -115,7 +114,7 @@ The hardware design was synthesized and implemented using **Xilinx Vivado** targ
 
 ---
 
-### 🧪 Testing & Simulation
+### Testing & Simulation
 Validation was performed on a massive scale through several steps:
 1. **Standard Testbench:** Run using the initial professor-provided test configurations.
 2. **Automated Random Scenarios:** A Python-based script [test_bench_generator.py](file:///C:/Users/loisu/Desktop/scuola/universita/github_fix/prova-finale-reti-logiche-2023-2024/testing/test_bench_generator.py) was built to generate **1000 random test cases**, varying:
@@ -133,14 +132,14 @@ Validation was performed on a massive scale through several steps:
 
 ## 🇮🇹 Versione Italiana
 
-### 📌 Descrizione del Progetto
+### Descrizione del Progetto
 Questa repository contiene l'implementazione hardware di un modulo digitale progettato per la **Prova Finale di Reti Logiche** presso il **Politecnico di Milano** (A.A. 2023-2024).
 
 Il progetto richiede lo sviluppo in VHDL di un modulo hardware sincrono che si interfacci con una RAM a porta singola. Il modulo legge una sequenza di parole, ne aggiorna il valore secondo regole predefinite e calcola il **Valore di Credibilità** ($C$) associato a ciascun elemento, riscrivendo i risultati finali in memoria.
 
 ---
 
-### 📋 Specifica dei Requisiti
+### Specifica dei Requisiti
 Il modulo legge una sequenza di $K$ parole a partire da un indirizzo base $ADD$.
 * **Struttura della Memoria:**
   * I dati $W$ della sequenza si trovano agli indirizzi pari: $ADD, ADD+2, ADD+4, \dots, ADD+2(K-1)$.
@@ -173,7 +172,7 @@ Il modulo legge una sequenza di $K$ parole a partire da un indirizzo base $ADD$.
 
 ---
 
-### 🛠️ Architettura e Implementazione
+### Architettura e Implementazione
 La struttura interna del componente [project_reti_logiche.vhd](file:///C:/Users/loisu/Desktop/scuola/universita/github_fix/prova-finale-reti-logiche-2023-2024/progetto/componenti/project_reti_logiche.vhd) è divisa in due blocchi principali:
 
 1. **Macchina a Stati Finiti (FSM):** Gestisce l'intera logica di controllo, le letture/scritture in memoria RAM, l'algebra per il decremento della credibilità e la generazione delle uscite. Maggiori dettagli in [fsm.vhd](file:///C:/Users/loisu/Desktop/scuola/universita/github_fix/prova-finale-reti-logiche-2023-2024/progetto/componenti/fsm.vhd).
@@ -199,7 +198,7 @@ La struttura interna del componente [project_reti_logiche.vhd](file:///C:/Users/
 
 ---
 
-### 📊 Risultati della Sintesi
+### Risultati della Sintesi
 Il codice è stato sintetizzato e implementato in ambiente **Xilinx Vivado** puntando alla scheda **FPGA xc7a200tfbg484-1**.
 
 #### Utilizzo delle Risorse
@@ -208,8 +207,7 @@ Il codice è stato sintetizzato e implementato in ambiente **Xilinx Vivado** pun
 | **LUT as Logic** | 139 | 134.600 | 0.10 % |
 | **Flip-Flops (FF)** | 14 | 269.200 | < 0.01 % |
 
-> [!NOTE]
-> È stata prestata massima attenzione per evitare la generazione involontaria di latch, assicurando un design sincrono pulito e privo di comportamenti instabili.
+È stata prestata massima attenzione per evitare la generazione involontaria di latch, assicurando un design sincrono pulito e privo di comportamenti instabili.
 
 #### Tempistiche (Timing)
 * **Periodo di Clock richiesto:** `20.0 ns` (50 MHz)
@@ -217,7 +215,7 @@ Il codice è stato sintetizzato e implementato in ambiente **Xilinx Vivado** pun
 
 ---
 
-### 🧪 Simulazioni e Test
+### Simulazioni e Test
 Il corretto funzionamento del modulo hardware è stato validato tramite diverse fasi di test:
 1. **Testbench Standard:** Fornito dai docenti del corso.
 2. **Generatore di Scenari Casuali:** Implementato uno script Python [test_bench_generator.py](file:///C:/Users/loisu/Desktop/scuola/universita/github_fix/prova-finale-reti-logiche-2023-2024/testing/test_bench_generator.py) per produrre **1000 casi di test casuali** variando la lunghezza della sequenza $K$ (da 0 a 1023) e i valori delle parole (da 0 a 255).
